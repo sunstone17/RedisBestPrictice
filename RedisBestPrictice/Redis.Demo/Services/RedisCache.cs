@@ -60,7 +60,6 @@ namespace Redis.Demo.Services
             return Database.StringGetRange(key, start, end);
         }
 
-
         public long StringIncrement(string key, long value = 1)
         {
             return Database.StringIncrement(key, value);
@@ -71,14 +70,19 @@ namespace Redis.Demo.Services
             return Database.StringDecrement(key, value);
         }
 
+        public void HashSet(string key, string hashField, string hashValue)
+        {
+            Database.HashSet(key, hashField, hashValue);
+        }
+
         public void HashSet(string key, HashEntry[] hashFields)
         {
             Database.HashSet(key, hashFields);
         }
 
-        public void HashGet(string key, string hashField)
+        public string HashGet(string key, string hashField)
         {
-            Database.HashGet(key, hashField);
+            return Database.HashGet(key, hashField);
         }
         public RedisValue[] HashGet(string key, RedisValue[] hashFields)
         {
@@ -90,6 +94,33 @@ namespace Redis.Demo.Services
             return Database.HashGetAll(key);
         }
 
+        public bool KeyDelete(string key)
+        {
+            return Database.KeyDelete(key);
+        }
 
+        public IEnumerable<HashEntry> HashScan(string key, string pattern, int pageSize)
+        {
+            return Database.HashScan(key, pattern, pageSize);
+        }
+
+        public long ListRightPush(string key, RedisValue[] values)
+        {
+            return Database.ListRightPush(key, values);
+        }
+
+        public long ListLength(string key)
+        {
+            return Database.ListLength(key);
+        }
+
+        public RedisValue[] ListRange(string key, long start = 0, long end = -1)
+        {
+            return Database.ListRange(key, start, end);
+        }
+        public void ListTrim(string key, long start, long end)
+        {
+            Database.ListTrim(key, start, end);
+        }
     }
 }

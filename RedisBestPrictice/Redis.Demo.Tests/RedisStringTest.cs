@@ -6,14 +6,8 @@ using System.Threading;
 
 namespace Redis.Demo.Tests
 {
-    public class Tests
+    public class Tests : TestBase
     {
-        [SetUp]
-        public void Setup()
-        {
-            Program.Main(null);
-        }
-
         [Test]
         public void TestString()
         {
@@ -28,7 +22,8 @@ namespace Redis.Demo.Tests
 
             redisCache.StringSet(key1, value1, new TimeSpan(0, 0, 2));
             Thread.Sleep(3 * 1000);
-            Assert.AreEqual(null, redisCache.StringGet(key1));
+            var result = redisCache.StringGet(key1);
+            Assert.AreEqual(null, result);
         }
     }
 }
