@@ -36,5 +36,9 @@ namespace Redis.Demo.Interfaces
 
         RedisValue[] ListRange(string key, long start = 0, long end = -1);
         void ListTrim(string key, long start, long end);
+
+        bool SetAdd(string key, string value);
+        string SetPop(string key);
+        bool SetRemove(string key, string value);
     }
 }

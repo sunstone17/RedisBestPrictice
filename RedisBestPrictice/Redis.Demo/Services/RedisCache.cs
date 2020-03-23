@@ -122,5 +122,19 @@ namespace Redis.Demo.Services
         {
             Database.ListTrim(key, start, end);
         }
+        public bool SetAdd(string key, string value)
+        {
+            return Database.SetAdd(key, value);
+        }
+
+        public string SetPop(string key)
+        {
+            return Database.SetPop(key);
+        }
+        public bool SetRemove(string key, string value)
+        {
+            return Database.SetRemove(key, value);
+        }
+
     }
 }
