@@ -36,5 +36,6 @@ namespace Redis.Demo.Interfaces
 
         RedisValue[] ListRange(string key, long start = 0, long end = -1);
         void ListTrim(string key, long start, long end);
+        IDatabase Database { get;}
     }
 }
