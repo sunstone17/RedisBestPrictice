@@ -12,8 +12,8 @@ namespace Redis.Demo.Tests
         {
             Demo.Program.Main(args);
 
-            new Locks().TestLockV2();
-            Console.Read();
+            //new Locks().TestLockV2();
+            //Console.Read();
         }
     }
 }

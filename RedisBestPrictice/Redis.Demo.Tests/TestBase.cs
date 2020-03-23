@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Redis.Demo.Interfaces;
 using Redis.Demo.Services;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,5 +21,16 @@ namespace Redis.Demo.Tests
     "dotnetcore31-" + Path.GetRandomFileName() + "-" + caller;
 
         public IRedisCache RedisCache => AutofacContainer.Resolve<IRedisCache>();
+
+
+        protected IServer GetAnyMaster(IConnectionMultiplexer muxer)
+        {
+            foreach (var endpoint in muxer.GetEndPoints())
+            {
+                var server = muxer.GetServer(endpoint);
+                if (!server.IsSlave) return server;
+            }
+            throw new InvalidOperationException("Requires a master endpoint (found none)");
+        }
     }
 }

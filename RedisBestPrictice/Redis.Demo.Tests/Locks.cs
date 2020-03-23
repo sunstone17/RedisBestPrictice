@@ -32,7 +32,7 @@ namespace Redis.Demo.Tests
         /// </summary>
         public void TestLockV2()
         {
-            var expiration = TimeSpan.FromSeconds(5);
+            var expiration = TimeSpan.FromSeconds(2);
             var db = RedisCache.Database;
 
             Parallel.For(0, 5, x =>
@@ -54,7 +54,7 @@ namespace Redis.Demo.Tests
                 {
                     Console.WriteLine($"{person} got the lock at {DateTimeOffset.Now.ToUnixTimeMilliseconds()}");
 
-                    if (new Random().NextDouble() < 10)
+                    if (new Random().NextDouble() < 0.6)
                     {
                         Console.WriteLine($"{person} release lock {db.LockRelease(Key, person)}  {DateTimeOffset.Now.ToUnixTimeMilliseconds()}");
                     }
