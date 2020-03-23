@@ -1,2 +1,2 @@
 # RedisBestPrictice
-Redis template var C#
+Redis template via C#
